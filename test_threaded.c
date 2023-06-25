@@ -23,7 +23,7 @@ void* sum_array(void* args) {
 }
 
 int main(void) {
-  const int nthreads = 4;       // Number of parallel threads
+  const int nthreads = 2;       // Number of parallel threads
   pthread_t threads[nthreads];  // Stored thread handles
   InputArgs args[nthreads];     // Input arguments to each thread
 
