@@ -18,14 +18,17 @@ int main(int argc, char* argv[]) {
   // CHALLENGE: Once you get this code working, try taking N and dx
   //            as command line arguments.
   //            The sscanf function will be useful for that.
-  size_t N = 1800;  // Number of points
-  double dx = 0.1;  // Step between x values
+  const size_t N = 1800;      // Number of points
+  const double lower = 0.;    // Lower bound of the plot (in radians)
+  const double upper = M_PI;  // Upper bound of the plot (in radians). Note M_PI is defined as pi in math.h
+  const double dx = (upper - lower) / (N-1); // Calculate distance between points
   double* x = malloc(sizeof(*x) * N);
   double* y = malloc(sizeof(*y) * N);
   double *dydx = malloc(sizeof(*dydx) * N);
 
+  // Set up y(x)
   for (size_t i = 0; i < N; ++i) {
-    x[i] = i*dx * M_PI / 180.; // M_PI is the pi constant, defined in math.h
+    x[i] = i * dx;
     y[i] = sin(x[i]); // NOTE: sin() for double precision,
                       //       sinf() for float (single precision),
                       //       and sinl() for long
